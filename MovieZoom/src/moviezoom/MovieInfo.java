@@ -24,22 +24,23 @@ public class MovieInfo {
 	private String rating;
 	private String tape;
         
-        ArrayList<ArrayList<MovieInfo>> Movies = new ArrayList<>();
+        public static ArrayList<ArrayList<MovieInfo>> Movies = new ArrayList<>();
         
         public MovieInfo(){
+            comment = "";
             for(int i=0;i<5;i++)
                 Movies.add(new ArrayList<>());
         }
         
-        public void Add(MovieInfo m){
-            Movies.get(Integer.parseInt(m.getTape())-1).add(m);
+        public static void Add(MovieInfo m){
+           // Movies.add(new ArrayList<>());
+        Movies.get(Integer.parseInt(m.getTape())-1).add(m);
         }
         
         public ArrayList<MovieInfo> Edit(String name)
         {
        
-            ArrayList<MovieInfo> m;
-            m = new ArrayList<>();
+            ArrayList<MovieInfo> m = new ArrayList<>();
             for(int i=0;i<Movies.size();i++)
             {
                 for(int j=0;j<Movies.get(i).size();j++)
@@ -103,7 +104,7 @@ public class MovieInfo {
 	
 	public void setComment(String c)
 	{
-		comment = c;
+		comment+= c+"\n";
 	}
 	
 	public String getSource()

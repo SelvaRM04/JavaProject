@@ -8,25 +8,21 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.table.*;
 import moviezoom.MovieInfo;
-
-
-
 /**
  *
  * @author Ragul S
  */
-public class EditMovie extends javax.swing.JFrame {
-    
-    MovieInfo addinfo = new MovieInfo();
+public class BrowseMovie extends javax.swing.JFrame {
+
+     MovieInfo addinfo = new MovieInfo();
     ArrayList<MovieInfo> m;
     
-
     /**
-     * Creates new form EditMovie
+     * Creates new form BrowseMovie
      */
-    public EditMovie() {
+    public BrowseMovie() {
         initComponents();
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -43,35 +39,30 @@ public class EditMovie extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         SearchBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        Edittable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        Listtable = new javax.swing.JTable();
         Editclear = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        MovieInfobox = new javax.swing.JTextArea();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Enter Movie Name :");
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                formComponentShown(evt);
-            }
-        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 0, 0));
         jLabel9.setText("MovieZoom");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 236, 56));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 236, 56));
 
         editmovietxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editmovietxtActionPerformed(evt);
             }
         });
-        getContentPane().add(editmovietxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 286, 39));
+        getContentPane().add(editmovietxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 286, 39));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Enter Movie Name :");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 92, 140, 39));
-        jLabel1.getAccessibleContext().setAccessibleName("");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 140, 39));
 
         SearchBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         SearchBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/search.png"))); // NOI18N
@@ -81,9 +72,9 @@ public class EditMovie extends javax.swing.JFrame {
                 SearchBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, -1, -1));
+        getContentPane().add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, 30));
 
-        Edittable.setModel(new javax.swing.table.DefaultTableModel(
+        Listtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -99,17 +90,14 @@ public class EditMovie extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        Edittable.addMouseListener(new java.awt.event.MouseAdapter() {
+        Listtable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                EdittableMouseClicked(evt);
+                ListtableMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(Edittable);
+        jScrollPane2.setViewportView(Listtable);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, -1, 410));
-
-        jButton1.setText("jButton1");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 140, -1, -1));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 380, 320));
 
         Editclear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Editclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clear.png"))); // NOI18N
@@ -119,47 +107,34 @@ public class EditMovie extends javax.swing.JFrame {
                 EditclearActionPerformed(evt);
             }
         });
-        getContentPane().add(Editclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
+        getContentPane().add(Editclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 100, -1));
+
+        MovieInfobox.setColumns(20);
+        MovieInfobox.setRows(5);
+        jScrollPane1.setViewportView(MovieInfobox);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 189, 292, 321));
+
+        jTextField1.setText("* Details");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, 99, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+    private void editmovietxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editmovietxtActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_formComponentShown
-
-    private void EditclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditclearActionPerformed
-        // TODO add your handling code here:
-        editmovietxt.setText("");
-    }//GEN-LAST:event_EditclearActionPerformed
-
-    private void EdittableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EdittableMouseClicked
-        int index = Edittable.getSelectedRow();
-        TableModel model = Edittable.getModel();
-        String name = model.getValueAt(index, 0).toString();
-        String year = model.getValueAt(index, 1).toString();
-        String tape = model.getValueAt(index, 2).toString();
-
-        int flag=0;
-        int a = JOptionPane.showConfirmDialog(null, "Do you want to edit " + name+" "+year,"Select",JOptionPane.YES_NO_OPTION);
-        if(a == 0){
-            //new EditMovieInfo(m,name,year,tape).setVisible(true);
-
-            new EditMovieInfo(MovieInfo.Movies,name,year,tape).setVisible(true);
-            flag = 1;
-        }
-
-        if(flag==1)
-        setVisible(false);
-    }//GEN-LAST:event_EdittableMouseClicked
+    }//GEN-LAST:event_editmovietxtActionPerformed
 
     private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed
         String movieName = editmovietxt.getText();
         m = addinfo.Edit(movieName);
 
-        DefaultTableModel dtm = (DefaultTableModel) Edittable.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) Listtable.getModel();
 
         dtm.setRowCount(0);
         for(int i=0;i<m.size();i++) {
@@ -174,9 +149,40 @@ public class EditMovie extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SearchBtnActionPerformed
 
-    private void editmovietxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editmovietxtActionPerformed
+    private void ListtableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListtableMouseClicked
+        
+        
+        MovieInfo m1 = new MovieInfo();
+        
+        int index = Listtable.getSelectedRow();
+        TableModel model = Listtable.getModel();
+        String name = model.getValueAt(index, 0).toString();
+        String year = model.getValueAt(index, 1).toString();
+        String tape = model.getValueAt(index, 2).toString();
+        
+        for(int i=0;i<MovieInfo.Movies.size();i++)
+        {
+            for(int j=0;j<MovieInfo.Movies.get(i).size();j++)
+            {
+                if (MovieInfo.Movies.get(i).get(j).getTitle().equals(name) && MovieInfo.Movies.get(i).get(j).getYear().equals(year) && MovieInfo.Movies.get(i).get(j).getTape().equals(tape));
+                m1 = MovieInfo.Movies.get(i).get(j);
+                break;
+            }
+        }
+        
+        MovieInfobox.append(m1.toString());
+
+        
+    }//GEN-LAST:event_ListtableMouseClicked
+
+    private void EditclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditclearActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_editmovietxtActionPerformed
+        editmovietxt.setText("");
+    }//GEN-LAST:event_EditclearActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,32 +201,34 @@ public class EditMovie extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditMovie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BrowseMovie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditMovie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BrowseMovie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditMovie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BrowseMovie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditMovie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BrowseMovie.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditMovie().setVisible(true);
+                new BrowseMovie().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Editclear;
-    private javax.swing.JTable Edittable;
+    private javax.swing.JTable Listtable;
+    private javax.swing.JTextArea MovieInfobox;
     private javax.swing.JButton SearchBtn;
     private javax.swing.JTextField editmovietxt;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
