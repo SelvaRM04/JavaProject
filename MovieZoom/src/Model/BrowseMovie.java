@@ -8,6 +8,7 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.table.*;
 import moviezoom.MovieInfo;
+import static moviezoom.MovieInfo.Movies;
 /**
  *
  * @author Ragul S
@@ -16,13 +17,31 @@ public class BrowseMovie extends javax.swing.JFrame {
 
      MovieInfo addinfo = new MovieInfo();
     ArrayList<MovieInfo> m;
+    int cur_i,cur_j;
+    
+    DefaultTableModel dtm;
+
     
     /**
      * Creates new form BrowseMovie
      */
     public BrowseMovie() {
+        setUndecorated(true);
         initComponents();
-         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        DefaultTableModel dtm = (DefaultTableModel) Listtable.getModel();
+
+        dtm.setRowCount(0);
+        for(int j=0;j<MovieInfo.Movies.size();j++)
+        {
+            m = MovieInfo.Movies.get(j);
+            for(int i=0;i<m.size();i++) {
+                dtm.addRow(new Object[]{
+                    m.get(i).getTitle(),m.get(i).getYear(),m.get(i).getTape()
+                });
+            }
+        }
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setBounds(530,125,760,625);
     }
 
     /**
@@ -34,46 +53,46 @@ public class BrowseMovie extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel9 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        MovieInfobox = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Listtable = new javax.swing.JTable();
         editmovietxt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         SearchBtn = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        Listtable = new javax.swing.JTable();
         Editclear = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        MovieInfobox = new javax.swing.JTextArea();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
+        Delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel9.setText("MovieZoom");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 236, 56));
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        editmovietxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editmovietxtActionPerformed(evt);
-            }
-        });
-        getContentPane().add(editmovietxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 286, 39));
+        MovieInfobox.setBackground(new java.awt.Color(102, 0, 153));
+        MovieInfobox.setColumns(20);
+        MovieInfobox.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        MovieInfobox.setForeground(new java.awt.Color(255, 204, 255));
+        MovieInfobox.setRows(5);
+        jScrollPane1.setViewportView(MovieInfobox);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Enter Movie Name :");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 140, 39));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 390, 410));
 
-        SearchBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        SearchBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/search.png"))); // NOI18N
-        SearchBtn.setText("Search");
-        SearchBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, -1, 30));
+        jPanel1.setBackground(new java.awt.Color(102, 0, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Listtable.setBackground(new java.awt.Color(255, 204, 255));
+        Listtable.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        Listtable.setForeground(new java.awt.Color(102, 0, 153));
         Listtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -90,6 +109,9 @@ public class BrowseMovie extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        Listtable.setRowHeight(30);
+        Listtable.setSelectionBackground(new java.awt.Color(102, 0, 153));
+        Listtable.setSelectionForeground(new java.awt.Color(255, 204, 255));
         Listtable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ListtableMouseClicked(evt);
@@ -97,31 +119,110 @@ public class BrowseMovie extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(Listtable);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 380, 320));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 290, 190));
 
-        Editclear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Editclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/clear.png"))); // NOI18N
+        editmovietxt.setBackground(new java.awt.Color(255, 204, 255));
+        editmovietxt.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        editmovietxt.setForeground(new java.awt.Color(102, 0, 153));
+        editmovietxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        editmovietxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editmovietxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(editmovietxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 290, 39));
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Enter Movie Name :");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 140, 39));
+
+        SearchBtn.setBackground(new java.awt.Color(255, 204, 255));
+        SearchBtn.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        SearchBtn.setForeground(new java.awt.Color(102, 0, 153));
+        SearchBtn.setText("Search");
+        SearchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 100, -1));
+
+        Editclear.setBackground(new java.awt.Color(255, 204, 255));
+        Editclear.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        Editclear.setForeground(new java.awt.Color(102, 0, 153));
         Editclear.setText("Clear");
         Editclear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditclearActionPerformed(evt);
             }
         });
-        getContentPane().add(Editclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 100, -1));
+        jPanel1.add(Editclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 100, -1));
 
-        MovieInfobox.setColumns(20);
-        MovieInfobox.setRows(5);
-        jScrollPane1.setViewportView(MovieInfobox);
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 48)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("MovieZoom");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 280, 70));
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 189, 292, 321));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 700));
 
-        jTextField1.setText("* Details");
+        jPanel3.setBackground(new java.awt.Color(102, 0, 153));
+        jPanel3.setForeground(new java.awt.Color(0, 102, 0));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Browse Page");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 160, 20));
+
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel12.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("  X");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 30, 30));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, -20, 480, 50));
+
+        jPanel5.setBackground(new java.awt.Color(102, 0, 153));
+        jPanel5.setForeground(new java.awt.Color(0, 102, 0));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 40, 640));
+
+        jPanel7.setBackground(new java.awt.Color(102, 0, 153));
+        jPanel7.setForeground(new java.awt.Color(0, 102, 0));
+        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 610, 460, 70));
+
+        jPanel2.setBackground(new java.awt.Color(255, 204, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField1.setEditable(false);
+        jTextField1.setBackground(new java.awt.Color(102, 0, 153));
+        jTextField1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField1.setText("      Details");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, 99, -1));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 130, 40));
+
+        Delete.setBackground(new java.awt.Color(102, 0, 153));
+        Delete.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        Delete.setForeground(new java.awt.Color(255, 255, 255));
+        Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 530, 90, 30));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 440, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -133,8 +234,8 @@ public class BrowseMovie extends javax.swing.JFrame {
     private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed
         String movieName = editmovietxt.getText();
         m = addinfo.Edit(movieName);
-
-        DefaultTableModel dtm = (DefaultTableModel) Listtable.getModel();
+        
+        dtm = (DefaultTableModel) Listtable.getModel();
 
         dtm.setRowCount(0);
         for(int i=0;i<m.size();i++) {
@@ -160,29 +261,71 @@ public class BrowseMovie extends javax.swing.JFrame {
         String year = model.getValueAt(index, 1).toString();
         String tape = model.getValueAt(index, 2).toString();
         
-        for(int i=0;i<MovieInfo.Movies.size();i++)
+        /*for(int i=0;i<MovieInfo.Movies.size();i++)
         {
             for(int j=0;j<MovieInfo.Movies.get(i).size();j++)
             {
-                if (MovieInfo.Movies.get(i).get(j).getTitle().equals(name) && MovieInfo.Movies.get(i).get(j).getYear().equals(year) && MovieInfo.Movies.get(i).get(j).getTape().equals(tape));
+                if (MovieInfo.Movies.get(i).get(j).getTitle().equals(name) && MovieInfo.Movies.get(i).get(j).getYear().equals(year) && MovieInfo.Movies.get(i).get(j).getTape().equals(tape))
                 m1 = MovieInfo.Movies.get(i).get(j);
+                cur_i = i;
+                cur_j = j;
                 break;
             }
+        }*/
+        MovieInfo m = new MovieInfo();
+        int ind1,ind2;
+        //MovieInfobox.setText("");
+        ///MovieInfobox.setText(MovieInfo.Movies.get(cur_i).get(cur_j).toString());
+        for(int i=0;i<Movies.size();i++)
+        {
+            for(int j=0;j<Movies.get(i).size();j++)
+            {
+                if (Movies.get(i).get(j).getTitle().equals(name) && Movies.get(i).get(j).getYear().equals(year) && Movies.get(i).get(j).getTape().equals(tape))
+                {
+                m = Movies.get(i).get(j);
+                ind1=i;
+                ind2=j;
+                break;
+                }
+            }
         }
-        
-        MovieInfobox.append(m1.toString());
-
+        MovieInfobox.setText(m.toString());
         
     }//GEN-LAST:event_ListtableMouseClicked
 
     private void EditclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditclearActionPerformed
         // TODO add your handling code here:
         editmovietxt.setText("");
+        
+        
     }//GEN-LAST:event_EditclearActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        // TODO add your handling code here:
+        String name = MovieInfo.Movies.get(cur_i).get(cur_j).getTitle();
+        String gen = MovieInfo.Movies.get(cur_i).get(cur_j).getGenre();
+       MovieInfo.Movies.get(cur_i).remove(cur_j);
+       for(int i=0;i<MovieInfo.hm.get(gen).size();i++)
+           if(name.equals(MovieInfo.hm.get(gen).get(i).getTitle()))
+           {
+               MovieInfo.hm.get(gen).remove(i);
+               break;
+           }
+       JOptionPane.showMessageDialog(null,"Movie Deleted Successfully");
+            //setVisible(false);
+
+       this.setVisible(false);
+       new BrowseMovie().setVisible(true);
+    }//GEN-LAST:event_DeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,13 +363,21 @@ public class BrowseMovie extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Delete;
     private javax.swing.JButton Editclear;
     private javax.swing.JTable Listtable;
     private javax.swing.JTextArea MovieInfobox;
     private javax.swing.JButton SearchBtn;
     private javax.swing.JTextField editmovietxt;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;

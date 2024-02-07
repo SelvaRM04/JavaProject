@@ -4,6 +4,7 @@
  */
 package Model;
 import javax.swing.*;
+import moviezoom.MovieInfo;
 
 /**
  *
@@ -14,8 +15,79 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
+    public static EditMovie em;
     public Home() {
+        new BG().setVisible(true);
         initComponents();
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        MovieInfo addinfo = new MovieInfo();
+            
+            addinfo.setActor("Vijay");
+            addinfo.setTitle("Leo");
+            addinfo.setDirector("Lokesh");
+            addinfo.setYear("2023");
+            addinfo.setRating("U/A");
+            addinfo.setTape("1");
+            addinfo.setGenre("action");
+            addinfo.setFormat("DVD");
+            addinfo.setSource("Commercial");
+            
+            MovieInfo.Add(addinfo);
+            
+            MovieInfo addinfo1 = new MovieInfo();
+            addinfo1.setActor("Kamal");
+            addinfo1.setTitle("Vikram");
+            addinfo1.setDirector("Lokesh");
+            addinfo1.setYear("2022");
+            addinfo1.setRating("U/A");
+            addinfo1.setTape("5");
+            addinfo1.setGenre("action");
+            addinfo1.setFormat("DVD");
+            addinfo1.setSource("Commercial");
+            
+            MovieInfo.Add(addinfo1);
+            
+            MovieInfo addinfo2 = new MovieInfo();
+            addinfo2.setActor("Kamal");
+            addinfo2.setTitle("Vasool Raja MBBS");
+            addinfo2.setDirector("Crazy Mohan");
+            addinfo2.setYear("2005");
+            addinfo2.setRating("U");
+            addinfo2.setTape("2");
+            addinfo2.setGenre("comedy");
+            addinfo2.setFormat("CD");
+            addinfo2.setSource("Homemade");
+            
+            MovieInfo.Add(addinfo2);
+            
+            MovieInfo addinfo3 = new MovieInfo();
+            addinfo3.setActor("Leo DeCaprio");
+            addinfo3.setTitle("Titanic");
+            addinfo3.setDirector("Christopher Nolan");
+            addinfo3.setYear("1994");
+            addinfo3.setRating("A");
+            addinfo3.setTape("3");
+            addinfo3.setGenre("romance");
+            addinfo3.setFormat("CD");
+            addinfo3.setSource("Commercial");
+            
+            MovieInfo.Add(addinfo3);
+            
+            MovieInfo addinfo4 = new MovieInfo();
+            addinfo4.setActor("Silambarasan");
+            addinfo4.setTitle("Maanadu");
+            addinfo4.setDirector("Venkat Prabhu");
+            addinfo4.setYear("2021");
+            addinfo4.setRating("U");
+            addinfo4.setTape("4");
+            addinfo4.setGenre("science fiction");
+            addinfo4.setFormat("CD");
+            addinfo4.setSource("Commercial");
+            
+            MovieInfo.Add(addinfo4);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -33,19 +105,21 @@ public class Home extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1320, 765));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 60)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("MovieZoom");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 25, 265, 58));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 25, 340, 60));
 
         jButton1.setBackground(new java.awt.Color(102, 204, 255));
-        jButton1.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("Add");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -53,21 +127,21 @@ public class Home extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 101, 109, 52));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 160, 70));
 
         jButton3.setBackground(new java.awt.Color(102, 204, 255));
-        jButton3.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         jButton3.setForeground(new java.awt.Color(51, 51, 51));
-        jButton3.setText("Browse");
+        jButton3.setText("Delete");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 297, -1, 52));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 160, 70));
 
         jButton4.setBackground(new java.awt.Color(102, 204, 255));
-        jButton4.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         jButton4.setForeground(new java.awt.Color(51, 51, 51));
         jButton4.setText("View");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -75,10 +149,10 @@ public class Home extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 405, 109, 52));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 580, 160, 70));
 
         jButton5.setBackground(new java.awt.Color(102, 204, 255));
-        jButton5.setFont(new java.awt.Font("Arial", 2, 24)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         jButton5.setForeground(new java.awt.Color(51, 51, 51));
         jButton5.setText("Edit");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -86,17 +160,14 @@ public class Home extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 197, 109, 52));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 160, 70));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/home-background-image.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-44, -12, 1370, 790));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new Catalog().setVisible(true);
@@ -104,13 +175,19 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        new EditMovie().setVisible(true);
+        em=new EditMovie();
+        em.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         new BrowseMovie().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        new ViewMovie().setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,5 +232,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

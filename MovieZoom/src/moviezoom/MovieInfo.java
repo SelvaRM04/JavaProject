@@ -25,6 +25,7 @@ public class MovieInfo {
 	private String tape;
         
         public static ArrayList<ArrayList<MovieInfo>> Movies = new ArrayList<>();
+        public static HashMap<String,ArrayList<MovieInfo>> hm = new HashMap<>();
         
         public MovieInfo(){
             comment = "";
@@ -35,6 +36,17 @@ public class MovieInfo {
         public static void Add(MovieInfo m){
            // Movies.add(new ArrayList<>());
         Movies.get(Integer.parseInt(m.getTape())-1).add(m);
+        
+        ArrayList<MovieInfo> mo = hm.get(m.genre);
+        
+        if(mo == null){
+            mo = new ArrayList<MovieInfo>();
+            mo.add(m);
+            hm.put(m.genre.toLowerCase(), mo);
+        }
+        else{
+            if(!mo.contains(m)) mo.add(m);
+        }
         }
         
         public ArrayList<MovieInfo> Edit(String name)
@@ -160,6 +172,6 @@ public class MovieInfo {
 	@Override
 	public String toString()
 	{
-		return "\nTitle : " + title + "\nDirector : " + director + "\nYear : " + year + "\nSource : " + source + "\nFormat : " + format + "\nGenre : " + genre + "\nRating : " + rating + "\nTape : " + tape + "\nComment : " + comment;
+		return "\nTitle : " + title + "\n\nDirector : " + director + "\n\nActor : " + actor +"\n\nYear : " + year + "\n\nSource : " + source + "\n\nFormat : " + format + "\n\nGenre : " + genre + "\n\nRating : " + rating + "\n\nTape : " + tape + "\n\nComment : " + comment;
 	}
 }
